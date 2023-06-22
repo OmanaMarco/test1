@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ClientRepository {
@@ -29,23 +30,14 @@ public class ClientRepository {
     }
 
     public List<Client> getByName(String clientFirstName) {
-        List<Client> firstNameMatch = new ArrayList<>();
-        for (Client client : lista) {
-            if (client.getFirstName().equalsIgnoreCase(clientFirstName)) {
-                firstNameMatch.add(client);
-            }
-        }
-        return firstNameMatch;
-        //convertir a lambda. Programacion funcional.
+        return lista.stream()
+                .filter(client -> client.getFirstName().equalsIgnoreCase(clientFirstName))
+                .collect(Collectors.toList());
     }
 
     public List<Client> getByLastName(String clientLastName) {
-        List<Client> lastNameMatch = new ArrayList<>();
-        for (Client client : lista) {
-            if (client.getLastName().equalsIgnoreCase(clientLastName)) {
-                lastNameMatch.add(client);
-            }
-        }
-        return lastNameMatch;
+        return lista.stream()
+                .filter(client -> client.getFirstName().equalsIgnoreCase(clientLastName))
+                .collect(Collectors.toList());
     }
 }

@@ -30,14 +30,12 @@ public class ClientRepository {
     }
 
     public List<Client> getByName(String clientFirstName) {
-        return lista.stream()
-                .filter(client -> client.getFirstName().equalsIgnoreCase(clientFirstName))
+        return lista.stream().filter(client -> client.getFirstName().equalsIgnoreCase(clientFirstName))
                 .collect(Collectors.toList());
     }
 
     public List<Client> getByLastName(String clientLastName) {
-        return lista.stream()
-                .filter(client -> client.getFirstName().equalsIgnoreCase(clientLastName))
+        return lista.stream().filter(client -> client.getFirstName().equalsIgnoreCase(clientLastName))
                 .collect(Collectors.toList());
     }
 }

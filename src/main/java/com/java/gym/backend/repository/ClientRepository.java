@@ -8,9 +8,9 @@ import java.util.List;
 
 @Component
 public class ClientRepository {
-
     List<Client> lista = new ArrayList<>();
-    public List<Client> getAll() {
+
+    public ClientRepository() {
         lista.add(new Client("Marco", "Omana"));
         lista.add(new Client("Carlos", "Sanchez"));
         lista.add(new Client("Pedro", "Pascal"));
@@ -21,6 +21,10 @@ public class ClientRepository {
         lista.add(new Client("Hector", "Perez"));
         lista.add(new Client("Antonio", "Vargas"));
         lista.add(new Client("Geraldine", "Diaz"));
+    }
+
+    public List<Client> getAll() {
+
         return lista;
     }
 
@@ -32,6 +36,7 @@ public class ClientRepository {
             }
         }
         return firstNameMatch;
+        //convertir a lambda. Programacion funcional.
     }
 
     public List<Client> getByLastName(String clientLastName) {

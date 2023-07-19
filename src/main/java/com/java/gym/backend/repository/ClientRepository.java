@@ -25,7 +25,6 @@ public class ClientRepository {
     }
 
     public List<Client> getAll() {
-
         return lista;
     }
 
@@ -37,5 +36,10 @@ public class ClientRepository {
     public List<Client> getByLastName(String clientLastName) {
         return lista.stream().filter(client -> client.getLastName().equalsIgnoreCase(clientLastName))
                 .collect(Collectors.toList());
+    }
+
+    public Client save(Client client) {
+        lista.add(client);
+        return client;
     }
 }

@@ -23,5 +23,8 @@ public class ClientService {
     public List<Client> getListByLastName(String lastName) {
         return repository.getByLastName(lastName);
     }
+    public Client save(Client client){
+        return repository.save(client);
+    }
 }
 

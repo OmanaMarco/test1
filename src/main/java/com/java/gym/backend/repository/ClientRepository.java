@@ -5,12 +5,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ClientRepository {
-
     List<Client> lista = new ArrayList<>();
-    public List<Client> getAll() {
+
+    public ClientRepository() {
         lista.add(new Client("Marco", "Omana"));
         lista.add(new Client("Carlos", "Sanchez"));
         lista.add(new Client("Pedro", "Pascal"));
@@ -21,26 +22,24 @@ public class ClientRepository {
         lista.add(new Client("Hector", "Perez"));
         lista.add(new Client("Antonio", "Vargas"));
         lista.add(new Client("Geraldine", "Diaz"));
+    }
+
+    public List<Client> getAll() {
         return lista;
     }
 
     public List<Client> getByName(String clientFirstName) {
-        List<Client> firstNameMatch = new ArrayList<>();
-        for (Client client : lista) {
-            if (client.getFirstName().equalsIgnoreCase(clientFirstName)) {
-                firstNameMatch.add(client);
-            }
-        }
-        return firstNameMatch;
+        return lista.stream().filter(client -> client.getFirstName().equalsIgnoreCase(clientFirstName))
+                .collect(Collectors.toList());
     }
 
     public List<Client> getByLastName(String clientLastName) {
-        List<Client> lastNameMatch = new ArrayList<>();
-        for (Client client : lista) {
-            if (client.getLastName().equalsIgnoreCase(clientLastName)) {
-                lastNameMatch.add(client);
-            }
-        }
-        return lastNameMatch;
+        return lista.stream().filter(client -> client.getLastName().equalsIgnoreCase(clientLastName))
+                .collect(Collectors.toList());
+    }
+
+    public Client save(Client client) {
+        lista.add(client);
+        return client;
     }
 }

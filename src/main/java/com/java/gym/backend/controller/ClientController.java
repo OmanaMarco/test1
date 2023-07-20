@@ -3,10 +3,7 @@ package com.java.gym.backend.controller;
 import com.java.gym.backend.entity.Client;
 import com.java.gym.backend.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +24,11 @@ public class ClientController {
     @GetMapping("client/lastname/{lastName}")
     public List<Client> getByLastName(@PathVariable String lastName){
         return service.getListByLastName(lastName);
+    }
+
+    @PostMapping("/client")
+    public Client save(@RequestBody Client client){
+        return service.save(client);
     }
 }
 

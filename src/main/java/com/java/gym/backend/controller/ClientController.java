@@ -14,21 +14,27 @@ public class ClientController {
     ClientService service;
 
     @GetMapping("/client/all")
-    public List<Client> getLista() {
-        return service.getList();
+        public List<Client> getLista() {
+            return service.getList();
     }
+
+    @GetMapping("client/{customerId}")
+    public List<Client> getById(@PathVariable int customerId) {
+        return service.getListById(customerId);
+    }
+
     @GetMapping("client/{firstName}")
-    public List<Client> getByName(@PathVariable String firstName){
+    public List<Client> getByName(@PathVariable String firstName) {
         return service.getListByName(firstName);
     }
+
     @GetMapping("client/lastname/{lastName}")
-    public List<Client> getByLastName(@PathVariable String lastName){
+    public List<Client> getByLastName(@PathVariable String lastName) {
         return service.getListByLastName(lastName);
     }
 
     @PostMapping("/client")
-    public Client save(@RequestBody Client client){
+    public Client save(@RequestBody Client client) {
         return service.save(client);
     }
 }
-

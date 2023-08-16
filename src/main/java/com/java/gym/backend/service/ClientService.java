@@ -17,14 +17,19 @@ public class ClientService {
         return repository.getAll();
     }
 
+    public List<Client> getListById(int customerId) {
+        return repository.getById(customerId);
+    }
+
     public List<Client> getListByName(String firstName) {
         return repository.getByName(firstName);
     }
+
     public List<Client> getListByLastName(String lastName) {
         return repository.getByLastName(lastName);
     }
-    public Client save(Client client){
+
+    public Client save(Client client) {
         return repository.save(client);
     }
 }
-

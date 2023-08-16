@@ -12,20 +12,24 @@ public class ClientRepository {
     List<Client> lista = new ArrayList<>();
 
     public ClientRepository() {
-        lista.add(new Client("Marco", "Omana"));
-        lista.add(new Client("Carlos", "Sanchez"));
-        lista.add(new Client("Pedro", "Pascal"));
-        lista.add(new Client("Mariana", "Lopez"));
-        lista.add(new Client("Lorena", "Silva"));
-        lista.add(new Client("Ernesto", "Galindo"));
-        lista.add(new Client("Norma", "Alvarez"));
-        lista.add(new Client("Hector", "Perez"));
-        lista.add(new Client("Antonio", "Vargas"));
-        lista.add(new Client("Geraldine", "Diaz"));
+        lista.add(new Client(1,"Marco", "Omana"));
+        lista.add(new Client(2,"Carlos", "Sanchez"));
+        lista.add(new Client(3,"Pedro", "Pascal"));
+        lista.add(new Client(4,"Mariana", "Lopez"));
+        lista.add(new Client(5,"Lorena", "Silva"));
+        lista.add(new Client(6,"Ernesto", "Galindo"));
+        lista.add(new Client(7,"Norma", "Alvarez"));
+        lista.add(new Client(8,"Hector", "Perez"));
+        lista.add(new Client(9,"Antonio", "Vargas"));
+        lista.add(new Client(10,"Geraldine", "Diaz"));
     }
 
     public List<Client> getAll() {
         return lista;
+    }
+    public List<Client> getById(int clientId){
+        return lista.stream().filter(client -> client.getCustomerId() == clientId)
+                .collect(Collectors.toList());
     }
 
     public List<Client> getByName(String clientFirstName) {
